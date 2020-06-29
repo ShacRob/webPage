@@ -1,6 +1,7 @@
 package com.api.services.jpa;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,16 @@ public class BlogsServices implements IBlogsServices {
 
 	public void eliminar(int id) {
 		repository.deleteById(id);
+	}
+
+
+	
+	public Blog getBlog(int id) {
+		Optional<Blog> optBlog = repository.findById(id);
+		if (optBlog.isPresent()) {
+			return optBlog.get();
+		}
+		return null;
 	}
 
 }

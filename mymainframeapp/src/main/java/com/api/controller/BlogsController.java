@@ -3,6 +3,7 @@ package com.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +23,17 @@ public class BlogsController {
 	@Autowired private IBlogsServices service;
 	
 	@GetMapping("/allBlogs")
-	public List<Blog> todas(){
-		return service.findAll();
+	public ResponseEntity<List<Blog>> todas(){
+		return ResponseEntity.ok(service.findAll());
+	}
+	
+	@GetMapping("/Blog/{id}")
+	public ResponseEntity<Blog> obtenerBlog(@PathVariable("id") int id){
+		Blog blog = service.getBlog(id);
+		if (blog == null) {
+			return ResponseEntity.noContent().build();
+		}
+		return ResponseEntity.ok(blog);
 	}
 	
 	@PostMapping("/Blog")

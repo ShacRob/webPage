@@ -9,4 +9,5 @@ public interface IBlogsServices {
 	List<Blog> findAll();
 	void guardar(Blog blog);
 	void eliminar(int i);
+	Blog getBlog(int id);
 }
