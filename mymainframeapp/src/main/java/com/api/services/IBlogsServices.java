@@ -7,7 +7,7 @@ import com.api.entity.Blog;
 public interface IBlogsServices {
 
 	List<Blog> findAll();
-	void guardar(Blog blog);
+	Blog guardar(Blog blog);
 	void eliminar(int i);
 	Blog getBlog(int id);
 }

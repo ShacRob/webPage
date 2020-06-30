@@ -18,13 +18,12 @@ public class BlogsServices implements IBlogsServices {
 	
 	
 	public List<Blog> findAll() {
-		
 		return repository.findAll();
 	}
 
 
-	public void guardar(Blog blog) {
-		repository.save(blog);		
+	public Blog guardar(Blog blog) {
+		return repository.save(blog);
 	}
 
 

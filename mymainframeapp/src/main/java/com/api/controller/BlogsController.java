@@ -37,20 +37,20 @@ public class BlogsController {
 	}
 	
 	@PostMapping("/Blog")
-	public String guardar(@RequestBody Blog blog) {
+	public ResponseEntity<Blog> guardar(@RequestBody Blog blog) {
 		service.guardar(blog);
-		return "Save";
+		return ResponseEntity.ok(blog);
 	}
 	
 	@PutMapping("/Blog")
-	public String actualizar(@RequestBody Blog blog) {
+	public ResponseEntity<Blog> actualizar(@RequestBody Blog blog) {
 		service.guardar(blog);
-		return "Update";
+		return ResponseEntity.ok(blog);
 	}
 	
 	@DeleteMapping("/Blog/{id}")
-	public String borrar(@PathVariable("id") int id) {
+	public ResponseEntity<String> borrar(@PathVariable("id") int id) {
 		service.eliminar(id);
-		return "Eliminado";
+		return ResponseEntity.ok("Eliminado : "+id);
 	}
 }
