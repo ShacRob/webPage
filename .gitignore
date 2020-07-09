@@ -3,4 +3,4 @@ mymainframeapp/src/main/resources/application.properties
 maincontact/target/
 maincontact/src/main/resources/application.properties
 application.properties
-/.metadata/
+.metadata/

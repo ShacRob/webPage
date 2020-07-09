@@ -35,15 +35,6 @@ create table Blog_entity (
 );
 
 
-insert into Lenguaje_catalog values (1,'Java');
-insert into Lenguaje_catalog values (2,'C');
-
-select * from Lenguaje_catalog;
-
-select * from Blog_entity t1 inner join Lenguaje_catalog t2 on t1.IdLenguaje = t2.IdLenguaje;
-
-DROP TABLE IF EXISTS Lenguaje_catalog, Comentario_entity, TipoBlog_catalog, Blog_entity;
-
 
 use MainFrame;
 
@@ -105,12 +96,6 @@ create table Direccion (
 );
 
 
-insert into Solicitud_entity values(1, 'pruebaSolicitud','312123', 'ioads@prueba.com', now(), 'este es el contenido de prueba');
-insert into DirectorioCorreo_Catlog values(1, 'ioads@prueba.com', 'este es asociado prueba', 0);
-insert into Correos_relation values(1, 1, 1, 0);
-select * from Solicitud_entity;
-select * from DirectorioCorreo_Catlog;
-select * from Correos_relation;
 
 
 Telefono tipo
@@ -137,38 +122,3 @@ Asociados estado
 1.-activo
 
 
-create table Solicitud_entity (
-    id int(11) not null auto_increment,
-    nombre varchar(255) not null,
-    telefono varchar(15) not null,
-    correo varchar(50) not null,
-    fecha date,
-    contenido text,
-    primary key (id)
-);
-
-create table DirectorioCorreo_Catlog(
-    id int(11) not null auto_increment,
-    correo varchar(50) not null,
-    descripcion varchar(50) not null,
-    estado int(1),
-    primary key (id)
-);
-
-create table Correos_relation(
-    id int(11) not null auto_increment,
-    idSolicitud int(11),
-    idCorreoEmisor int(11),
-    estado int(1),
-    primary key (id),
-    CONSTRAINT fk_solicitud foreign key (idSolicitud) references Solicitud_entity (id),
-    CONSTRAINT fk_correoE foreign key (idCorreoEmisor) references DirectorioCorreo_Catlog (id)
-);
-
-insert into Solicitud_entity values(1, 'pruebaSolicitud','312123', 'ioads@prueba.com', now(), 'este es el contenido de prueba');
-insert into DirectorioCorreo_Catlog values(1, 'ioads@prueba.com', 'este es cliente prueba', 0);
-insert into Correos_relation values(1, 1, 1, 0);
-select * from Solicitud_entity;
-select * from DirectorioCorreo_Catlog;
-select * from Correos_relation;
-DROP TABLE IF EXISTS Correos_relation, Solicitud_entity, DirectorioCorreo_Catlog;
