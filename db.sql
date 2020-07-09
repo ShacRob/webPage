@@ -35,11 +35,90 @@ create table Blog_entity (
 );
 
 
-insert into Lenguaje_catalog values (1,'Java');
-insert into Lenguaje_catalog values (2,'C');
 
-select * from Lenguaje_catalog;
+use MainFrame;
 
-select * from Blog_entity t1 inner join Lenguaje_catalog t2 on t1.IdLenguaje = t2.IdLenguaje;
+create table Solicitud (
+    id int(11) not null auto_increment,
+    nombre varchar(255) not null,
+    telefono varchar(15) not null,
+    correo varchar(50) not null,
+    fecha date,
+    contenido text,
+    idAsociado int (11) not null
+    primary key (id),
+    CONSTRAINT fk_asociado foreign key (idAsociado) references Asociados_catlog (id),
+    
+);
 
-DROP TABLE IF EXISTS Lenguaje_catalog, Comentario_entity, TipoBlog_catalog, Blog_entity;
+create table Asociados(
+    id int(11) not null auto_increment,
+    nombre varchar(100),
+    rfc varchar(20),
+    estado int(1),
+    primary key (id)
+);
+
+create table Telefonos(
+    id int(11) not null auto_increment,
+    tipo int(1),
+    celular int(1)
+    telefono varchar(15),
+    idAsociado int(11),
+    primary key (id),
+    CONSTRAINT fk_asociado_telefono foreign key (idAsociado) references Asociados_catlog (id),
+);
+
+create table Correos (
+    id int(11) not null auto_increment,
+    idAsociado int(11),
+    tipo int(1),
+    correo varchar(50),
+    primary key (id),
+    CONSTRAINT fk_asociado_correo foreign key (idAsociado) references Asociados_catlog (id),
+);
+
+
+create table Direccion (
+    id int(11) not null auto_increment,
+    idAsociado int(11),
+    tipo int(1),
+    pais varchar(50),
+    estado varchar(50),
+    municipio varchar(50),
+    colonia varchar(50),
+    calle varchar(50),
+    numExt varchar(50),
+    numInt varchar(50),
+    cp varchar(50),
+    primary key (id),
+    CONSTRAINT fk_asociado_direccion foreign key (idAsociado) references Asociados_catlog (id),
+);
+
+
+
+
+Telefono tipo
+1.-contacto principal
+2.-contacto para asociado
+3.-contacto principal y asociado
+
+Telefono celular
+0.-celular
+1.-fijo
+
+Correo tipo
+1.-contacto principal
+2.-contacto para asociado
+3.-contacto principal y asociado
+
+Direccion tipo
+1.-direccion fiscal
+2.-sucursal
+3.-ambos
+
+Asociados estado
+0.-inactivo
+1.-activo
+
+
