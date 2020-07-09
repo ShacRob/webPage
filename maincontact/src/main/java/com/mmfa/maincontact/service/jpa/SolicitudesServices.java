@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mmfa.maincontact.entity.Asociado;
 import com.mmfa.maincontact.entity.Correo;
 import com.mmfa.maincontact.entity.Solicitud;
 import com.mmfa.maincontact.repository.SolicitudesRepository;
