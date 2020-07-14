@@ -20,7 +20,7 @@ public class Solicitud {
 	private String nombre;
 	private String telefono;
 	private String correo;
-	private Date date;
+	private Date fecha;
 	private String text;
 	
 	@ManyToOne
@@ -59,12 +59,12 @@ public class Solicitud {
 		this.correo = correo;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getFacha() {
+		return fecha;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setFacha(Date facha) {
+		this.fecha = facha;
 	}
 
 	public String getText() {
@@ -86,8 +86,9 @@ public class Solicitud {
 	@Override
 	public String toString() {
 		return "Solicitud [id=" + id + ", nombre=" + nombre + ", telefono=" + telefono + ", correo=" + correo
-				+ ", date=" + date + ", text=" + text + ", asociado=" + asociado + "]";
+				+ ", facha=" + fecha + ", text=" + text + ", asociado=" + asociado + "]";
 	}
+
 	
 	
 }
